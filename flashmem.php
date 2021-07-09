@@ -13,7 +13,7 @@
 				<div id='dSTree' class='diag-dtree ui-widget-content ui-corner-all'></div>
 				</div>
 				</div>
-				<h2 align='right' class='tab-header'>Flash Memory Manager <span class='header-tiny-text'>v1.3.0</span></h2>
+				<h2 align='right' class='tab-header'>Flash Memory Manager <span class='header-tiny-text'>v1.3.1</span></h2>
 				<div id='treecontainer' class='fm-container'>
 				<table id='fmbox' class='window'>
 				<tbody class='window'>
@@ -170,6 +170,7 @@
 						'dump_start': 0,
 						'save_offset': 0,
 						'file_path': '/dev_hdd0/dump.hex',
+						'default_name': 'dump.hex',
 						'buffer': null
 					};
 					var dialogButtons = [{text: 'Save', icon: 'ui-icon-disk', click: function(event, ui){
@@ -196,6 +197,22 @@
 							}
 							else{
 								confirmDump();
+							}
+						}
+						else if(sobj.idps){
+							//alert(sobj.idps);
+							jQdialog.dialog('close');
+							sobj.file_path = jQlbl_fname[0].innerText;
+							function confirmSave(){
+								setTimeout(function() {
+								sdef.resolve(sobj);
+							},250);
+							}
+							if(fsitem_exists(sobj.file_path)){
+								confirmDialog('If you continue, '+sobj.file_path+' will be overwritten','Confirm',confirmSave);
+							}
+							else{
+								confirmSave();
 							}
 						}
 					}},{text: 'Cancel', icon: 'ui-icon-close', click: function(event, ui){
@@ -335,6 +352,10 @@
 						jQdialog.dialog('option', 'title', txt );
 					};
 					this.open = function(obj,func){
+						sobj = obj ? obj : sobj;
+						if(sobj.default_name){
+							fname = sobj.default_name ? sobj.default_name : 'dump.hex';
+						}
 						jQdialog.dialog('open');
 						jQuery('.scbsave').mCustomScrollbar({
 							theme: (Cookies.get('style')==='eggplant') ? 'light-thick' : 'dark-thick'
@@ -342,7 +363,6 @@
 						this.disableSaveButton();
 						this.disableSaveText();
 						jQlbl_fname.text('Please select a destination folder');
-						sobj = obj ? obj : sobj;
 						sdef = jQuery.Deferred();
 						sdef.promise().done(func);
 						jQtree.focus();
@@ -725,6 +745,7 @@
 														'dump_start': 0,
 														'save_offset':0,
 														'file_path': '',
+														'default_name': 'dump.hex',
 														'tls': null,
 														'buffer': null
 													},mt_dump);
@@ -774,7 +795,7 @@
 											'_disabled': is_cex ? helper.nofsm_url.length>0 ? false: true : true, //add more checks????
 											'icon' : 'fa fa-download fa-fw',
 											'action': function (obj) {
-												document.getElementById('dlframe').src = 'file.php?tk='+ftoken+'&file='+helper.nofsm_url;
+												document.getElementById('dlframe').src = 'file3.php?tk='+ftoken+'&file='+helper.nofsm_url;
 											}
 										},
 										'Patch': {
@@ -823,6 +844,7 @@
 															'dump_start': _nor ? 0x600:0x400,
 															'save_offset': _nor ? 0x10:0x30,
 															'file_path': '',
+															'default_name': 'ros0.hex',
 															'buffer': null
 														}: {
 															'sector_count': 0x3800,
@@ -830,6 +852,7 @@
 															'dump_start': _nor ? 0x3E00:0x3C00,
 															'save_offset': _nor ? 0x10:0x20,
 															'file_path': '',
+															'default_name': 'ros1.hex',
 															'buffer': null
 														},mt_dump);
 												},0);
@@ -844,6 +867,31 @@
 											'action': function (obj) {
 												idps_hidden ? jstree.rename_node('idps', 'IDPS: '+idps.toUpperCase()) : jstree.rename_node('idps', 'IDPS: '+XXX);
 												idps_hidden = !idps_hidden;
+	//u64 value=0;
+	//lv2_ss_update_mgr_if(UPDATE_MGR_PACKET_ID_READ_EPROM, QA_FLAG_OFFSET, (uint64_t) &value, 0, 0, 0, 0);
+		
+	// var rvalue = helper.heap.store(8);
+	// var scret = helper.rop.rrun(syscall32(863,0x600b,0x48C61,rvalue,0, 0, 0, 0));
+	// alert('syscall returned 0x'+scret.toString(16));
+	// alert('value 0x'+helper.memory.upeek32(rvalue).toString(16)+helper.memory.upeek32(rvalue+4).toString(16));
+	// helper.heap.free([rvalue]);
+		
+		
+											}
+										},
+										'Save':{
+											'separator_before': false,
+											'separator_after': false,
+											'label':  'Save IDPS as file',
+											'icon' : 'fa fa-floppy-o fa-fw',
+											'action': function (obj) {
+												setTimeout(function(){
+													sdiag.open( {
+															'file_path': '',
+															'idps':idps,
+															'default_name': 'idps.hex'
+														},idps_dump);
+												},0);
 											}
 										}
 									}:{};
@@ -914,6 +962,7 @@
 						//Show spinner
 						function sha256_cleanup(){
 							//alert('sha256_cleanup');
+							so.close();
 							delete rosH;
 							enable_GUI();
 							jQuery().toastmessage('removeToast', close_toast);
@@ -1269,6 +1318,7 @@
 						var f = new fileObject(dump_object.file_path,helper.fs_flag_create_rw);
 						Logger.warn('fileObject created'+getElapsedTime(start));
 						ulog(f.size>0 ? 'File IO Overwriting '+dump_object.file_path : 'File IO Creating '+dump_object.file_path );
+						//Logger.error('Socket Handle 0x'+so.device_handle.toString(16));
 						var d = new dumpObject(so,f,dump_object);
 						Logger.warn('dumpObject '+getElapsedTime(start));
 						var max_it = Math.floor(dump_object.sector_count/dump_object.nsec_iter);
@@ -1363,6 +1413,20 @@
 					catch(e){
 						Logger.error('<h2><b>JS Exception: </b></h2><br>'+e);
 					}
+				};
+				var idps_dump = function(iobj){
+					var idps_offset = helper.heap.store(iobj.idps.toUpperCase());
+					var fo = new fileObject(iobj.file_path, helper.fs_flag_create_rw);
+					var iret = fo.save({'offset':idps_offset,'size':0x10},0x10,null,null);
+					fo.close();
+					delete fo;
+					if(iret==0){
+						infoDialog('IDPS saved at '+ iobj.file_path,'Saved IDPS',function(){});
+					}
+					else{
+						infoDialog('Error 0x'+iret.toString(16)+' saving IDPS at '+ iobj.file_path,'Error saving IDPS',function(){});
+					}
+					helper.heap.free([idps_offset]);
 				};
 				var mt_patch = function(patch_object){
 					if(!patch_object){return;}
