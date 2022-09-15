@@ -18,8 +18,15 @@ website goes down.
 - **Use this mirror as a last resort** - you should always go to [bgtoolset page](https://www.ps3xploit.net/bgtoolset/) first, and use tools provided there.
   Not only they are more reliable, and written by people who actually know what they're doing - they're also always up to date.
 - **I'm not responsible for any damage you may do to your console**. This stuff if used inproperly, can brick your PS3.
-- I tested this dump on my `CECHJ03 PAL` PS3 FAT console, with `4.87` firmware, and it worked without any issues. However I do not guarantee that it will work for you.
-    - **I haven't tested it on other versions (`4.88` or later)!**
+- Some people tested this dump on their consoles, and it worked without any issues. However I do not guarantee that it will work for you. See [Tested consoles][#tested-consoles].
 - I'm not providing any info how to use this locally, if you don't know it - you probably shouldn't do this.
 - It's not a full dump, I only focused on happy path, of flashing PS3. Memory editor probably wouldn't work, logs are also not reliable. Original toolset uses `*.php` files,
   which (for obvious reasons) I couldn't dump, so most of them are just plain HTML output of the scripts. The `file3.php` is my dummy, minimal implementation which makes all this stuff work.
+
+## Tested consoles
+
+| Variant | Model      | Firmware | Status | Source                                                              |
+|---------|------------|----------|:------:|---------------------------------------------------------------------|
+| SLIM    | CECH-2503B | 4.88     | ✅     | E-mail info                                                         |
+| SLIM    | CECH-2504  | 4.88     | ✅     | [Twitter](https://twitter.com/leerz25/status/1555749812988809216#m) |
+| FAT     | CECH-J03   | 4.87     | ✅     | Myself                                                              |
