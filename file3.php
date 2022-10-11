@@ -28,6 +28,46 @@ $files = array(
     'type' => 'application/x-javascript',
     'kind' => 'js',
   ),
+  'nofsm_patch_480.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_480.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
+  'nofsm_patch_481.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_481.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
+  'nofsm_patch_482.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_482.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
+  'nofsm_patch_483.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_483.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
+  'nofsm_patch_484.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_484.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
+  'nofsm_patch_485.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_485.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
+  'nofsm_patch_486.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_486.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
+  'nofsm_patch_487.bin' => array(
+    'path' => __DIR__ . '/files/nofsm_patch_487.bin',
+    'type' => 'application/octet-stream',
+    'kind' => 'bin',
+  ),
   'nofsm_patch_488.bin' => array(
     'path' => __DIR__ . '/files/nofsm_patch_488.bin',
     'type' => 'application/octet-stream',
@@ -39,7 +79,7 @@ $item = $files[$file];
 
 if(!file_exists($item['path'])) {
   http_response_code(404);
-  exit;
+  exit
 }
 
 header('Content-Type: ' . $item['type']);

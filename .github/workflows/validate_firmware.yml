@@ -1,0 +1,14 @@
+name: Validate firmware
+on:
+  - pull_request
+
+jobs:
+  firmware-check:
+    name: Validate firmware
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Validate firmware
+        run: "cd files && md5sum -c nofsm_patch_md5.sum && sha1sum -c nofsm_patch_sha1.sum"

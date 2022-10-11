@@ -15,7 +15,7 @@ Ps3xploit team. If you find these tools useful, please consider a donation via P
 
 - **This is NOT official repository of bgtoolset**. It's a dump which I made for myself, to be able jailbreak my console if for whatever reason [Ps3Xploit](https://www.ps3xploit.com/)
 website goes down.
-- **Use this mirror as a last resort** - you should always go to [bgtoolset page](https://www.ps3xploit.net/bgtoolset/) first, and use tools provided there.
+- **Use this mirror as a last resort** - you should always go to [bgtoolset page](https://www.ps3xploit.me/) first, and use tools provided there.
   Not only they are more reliable, and written by people who actually know what they're doing - they're also always up to date.
 - **I'm not responsible for any damage you may do to your console**. This stuff if used inproperly, can brick your PS3.
 - Some people tested this dump on their consoles, and it worked without any issues. However I do not guarantee that it will work for you. See [Tested consoles][#tested-consoles].
@@ -29,4 +29,8 @@ website goes down.
 |---------|------------|----------|:------:|---------------------------------------------------------------------|
 | SLIM    | CECH-2503B | 4.88     | ✅     | E-mail info                                                         |
 | SLIM    | CECH-2504  | 4.88     | ✅     | [Twitter](https://twitter.com/leerz25/status/1555749812988809216#m) |
-| FAT     | CECH-J03   | 4.87     | ✅     | Myself                                                              |
+| FAT     | CECH-J03   | 4.87     | ✅     | ajgon                                                              |
+
+## Contributors
+
+- [@dracinn](https://github.com/dracinn)
