@@ -1,0 +1,124 @@
+/*
+ Splitter container. Set this to the desired width and height
+ of the combined left and right panes. In this example, the
+ height is fixed and the width is the full width of the body,
+ less the margin on the splitter itself.
+
+#splitter {
+	background-color: white;
+	height: 400px;
+	border: 1px solid #ccc;
+}
+*/
+/*
+ Left-side element of the splitter. Use pixel units for the
+ min-width and max-width; the splitter plugin parses them to
+ determine the splitter movement limits. Set the width to
+ the desired initial width of the element; the plugin changes
+ the width of this element dynamically.
+
+#filetree {
+	overflow: auto;
+	width: 30%; 
+	min-width: 100px; 
+}
+
+#filetree>ul {
+	padding: 4px;
+}
+*/
+/*
+ Right-side element of the splitter.
+
+#fileinfo {
+	padding: 4px;
+	min-width: 100px;
+	overflow: auto;
+	
+}
+*/
+/* 
+ Splitter bar style; the .active class is added when the
+ mouse is over the splitter or the splitter is focused
+ via the keyboard taborder or an accessKey. 
+
+#splitter .vsplitbar {
+	width: 6px;
+	background: #ccc url("vgrabber.gif") no-repeat center;
+}
+
+#splitter .vsplitbar.active, #splitter .vsplitbar:hover {
+	background: #e88 url("vgrabber.gif") no-repeat center;
+}
+*/
+/*
+*/
+/*
+ Splitter container. Set this to the desired width and height
+ of the combined left and right panes. In this example, the
+ height is fixed and the width is the full width of the body,
+ less the margin on the splitter itself.
+*/
+
+#fecontainer {
+	margin-right:8px;
+	padding-top:0;
+	padding-left:10px;
+	width: 98% !important;
+	max-width: 98% !important;
+	min-width: 500px !important;
+	height: 97%;
+	border: 0 !important;
+}
+
+/*
+ Left-side element of the splitter. Use pixel units for the
+ min-width and max-width; the splitter plugin parses them to
+ determine the splitter movement limits. Set the width to
+ the desired initial width of the element; the plugin changes
+ the width of this element dynamically.
+*/
+#contfiletree { /* padding: 4px; */
+	overflow: auto;
+	width: 35%; /* optional, initial splitbar position */
+	min-width: 100px; /* optional */ /* No margin or border allowed */
+}
+
+#contfiletree>ul {
+	padding: 4px;
+	padding-top: 0;
+}
+
+/*
+ Right-side element of the splitter.
+*/
+#fileinfo {
+	padding: 0 4px 4px 10px;
+	min-width: 200px;
+	overflow: auto;
+	//max-width:400px;
+	height:92%;
+	border:0;
+	/* No margin or border allowed */
+}
+
+/* 
+ Splitter bar style; the .active class is added when the
+ mouse is over the splitter or the splitter is focused
+ via the keyboard taborder or an accessKey. 
+*/
+#fecontainer .vsplitbar {
+	margin-left:10px !important;
+	#margin-right:10px !important;
+	width: 3px;
+	max-width: 3px;
+	#background-color: #ccc;
+	background: silver url("fe/scripts/jquery.splitter/vgrabber.gif") no-repeat center;
+}
+
+#fecontainer .vsplitbar.active, 
+#fecontainer .vsplitbar:hover {
+	#background-color: #e88;
+	background: #e88 url("fe/scripts/jquery.splitter/vgrabber.gif") no-repeat center;
+}
+/**/
