@@ -29,7 +29,10 @@ website goes down.
 |---------|------------|----------|:------:|---------------------------------------------------------------------|
 | SLIM    | CECH-2503B | 4.88     | ✅     | E-mail info                                                         |
 | SLIM    | CECH-2504  | 4.88     | ✅     | [Twitter](https://twitter.com/leerz25/status/1555749812988809216#m) |
-| FAT     | CECH-J03   | 4.87     | ✅     | ajgon                                                              |
+| FAT     | CECH-J03   | 4.87     | ✅     | ajgon                                                               |
+| FAT     | CECH-L04   | 4.86     | ✅     | [GitHub Issue](https://github.com/ajgon/bgtoolset/issues/7)         |
+| SLIM    | CECH-2004A | 4.86     | ✅     | E-mail info                                                         |
+| SLIM    | CECH-2004B | 4.86     | ✅     | [GitHub Issue](https://github.com/ajgon/bgtoolset/issues/7)         |
 
 ## Contributors
 
