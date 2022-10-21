@@ -73,8 +73,8 @@
 					return false;
 				}
 			};
-			var get_year =function() {return '2022';};
-			var get_day =function() {return '0';};
+			var get_year =function() {return '<?= echo(date('Y')); ?>';};
+			var get_day =function() {return '<?= echo(date('w')); ?>';};
 			var fwv = '4.89';
 			token ='bVBwcJUOF3x5Mi1jEhA4RR/STnwicOfara+atTbAJSE=';
 					function loadLib(idx){
