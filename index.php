@@ -73,8 +73,13 @@
 					return false;
 				}
 			};
-			var get_year =function() {return '<?= echo(date('Y')); ?>';};
-			var get_day =function() {return '<?= echo(date('w')); ?>';};
+			<?php
+				if( ! ini_get('date.timezone') )
+					date_default_timezone_set('UTC');
+				
+				printf("var get_year =function() {return '".date('Y')."';};\n");
+				printf("			var get_day =function() {return '".date('w')."';};\n");
+			?>
 			var fwv = '4.89';
 			token ='bVBwcJUOF3x5Mi1jEhA4RR/STnwicOfara+atTbAJSE=';
 					function loadLib(idx){
